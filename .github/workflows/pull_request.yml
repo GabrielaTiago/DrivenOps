@@ -1,0 +1,19 @@
+name: Pull Request
+on: [pull_request]
+jobs:
+  PullRequest-Github:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+      - name: Make a new envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+          envkey_POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+          envkey_POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+          envley_DATABASE_URL: ${{secrets.DATABASE_URL}}
+          directory: back-end
+          file_name: .env.test
+      - name: Run tests
+        run: docker-compose -f docker-compose-test.yml run node_sorteador npm run test
