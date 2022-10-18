@@ -4,7 +4,7 @@ services:
     container_name: postgres_db
     restart: always
     ports:
-      - 2345:5432
+      - 4457:5432
     env_file:
       - ./back-end/.env
     volumes:
@@ -33,7 +33,7 @@ services:
     image: nginx_app_image
     build: ./nginx
     ports: 
-      - 80:80
+      - 8080:80
     depends_on:
       - postgres_db
       - node_app
