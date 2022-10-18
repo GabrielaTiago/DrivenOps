@@ -22,3 +22,5 @@ services:
       - postgres_db
     env_file:
       - back-end/.env.test
+volumes:
+  pg_db:
