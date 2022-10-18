@@ -16,4 +16,4 @@ jobs:
           directory: back-end
           file_name: .env.test
       - name: Run tests
-        run: docker-compose -f docker-compose-test.yml run node_sorteador npm run test
+        run: docker-compose -f docker-compose-test.yml run node_app npm run test
